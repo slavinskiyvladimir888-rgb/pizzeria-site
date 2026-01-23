@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Моя Піцерія</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<a href="tel:+380973719397" class="call-fab" aria-label="Подзвонити">
+  📞 Подзвонити
+</a>
+<div class="cart-fab" id="cartFab">
+  <div class="cart-fab__sum">Сума: <span id="cartFabSum">0</span> грн</div>
+  <button class="cart-fab__btn" id="cartFabBtn">Оформити</button>
+</div>
+
+<body>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <div>
+      <h1>🍕 Varan</h1>
+      <p>Смачна їжа поруч з вами</p>
+    </div>
+
+  <div class="header-actions">
+  <a class="call-btn" href="tel:+380973719397">📞 Подзвонити</a>
+
+  <button class="cart-btn" id="cartBtn">
+    🛒 Кошик: <span id="cartCount">0</span>
+  </button>
+</div>
+  
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="toolbar">
+    <div class="tabs" id="tabs"></div>
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Пошук по меню…"
+      autocomplete="off"
+    />
+  </div>
+
+  <h2 id="sectionTitle" class="section-title">Меню</h2>
+
+  <div id="menu" class="menu"></div>
+</main>
+
+<!-- Модалка кошика -->
+<div class="modal" id="modal">
+  <div class="modal__content">
+    <div class="modal__head">
+      <h3>🛒 Кошик</h3>
+      <button class="btn-ghost" id="closeModal">Закрити</button>
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="modal__foot">
+      <div><b>Разом:</b> <span id="cartTotal">0</span> грн</div>
+      <div class="modal__actions">
+        <button class="btn-ghost" id="clearCart">Очистити</button>
+        <button id="orderBtn">Замовити</button>
+      </div>
+    </div>
+
+    <p class="note" id="orderHint"></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
