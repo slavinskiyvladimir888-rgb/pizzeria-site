@@ -2,78 +2,165 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <title>Моя Піцерія</title>
+  <title>Varan — доставка</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
-<a href="tel:+380973719397" class="call-fab" aria-label="Подзвонити">
-  📞 Подзвонити
-</a>
-<div class="cart-fab" id="cartFab">
-  <div class="cart-fab__sum">Сума: <span id="cartFabSum">0</span> грн</div>
-  <button class="cart-fab__btn" id="cartFabBtn">Оформити</button>
-</div>
-
 <body>
 
-<header class="header">
-  <div class="wrap header__inner">
-    <div>
-      <h1>🍕 Varan</h1>
-      <p>Смачна їжа поруч з вами</p>
+  <!-- Floating кнопка дзвінка (на мобілці) -->
+  <a href="tel:+380973719397" class="call-fab" aria-label="Подзвонити">📞 Подзвонити</a>
+
+  <!-- Floating кошик (на мобілці) -->
+  <div class="cart-fab" id="cartFab">
+    <div class="cart-fab__sum">Сума: <span id="cartFabSum">0</span></div>
+    <button class="cart-fab__btn" id="cartFabBtn" type="button">Оформити</button>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+<header class="header header--glass">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="header__inner header__inner--new">
+        <div class="brand">
+          <div class="brand__mark">🍕</div>
+          <div class="brand__text">
+            <div class="brand__name">Varan</div>
+            <div class="brand__tag">Смачна їжа поруч з вами</div>
+          </div>
+        </div>
+
+        <div class="header-actions header-actions--new">
+          <a class="call-btn call-btn--new" href="tel:+380973719397">📞 Подзвонити</a>
+          <button class="cart-btn cart-btn--new" id="cartBtn" type="button">
+            🛒 Кошик <span class="cart-badge" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Категорії (2 рядки) -->
+      <div class="tabs tabs--header tabs--tworows" id="tabs"></div>
+
+      <div class="hot-badge">🔥 HOT</div>
     </div>
-
-  <div class="header-actions">
-  <a class="call-btn" href="tel:+380973719397">📞 Подзвонити</a>
-
-  <button class="cart-btn" id="cartBtn">
-    🛒 Кошик: <span id="cartCount">0</span>
-  </button>
-</div>
-  
   </div>
 </header>
 
-<main class="wrap">
-  <div class="toolbar">
-    <div class="tabs" id="tabs"></div>
+<!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="wrap hero__inner">
+      <div class="hero__left">
+       <h1 class="hero__title hero__title--gradient">
+        Ну що, замовляємо?
+  </h1>
+ 
+        <div class="hero__buttons">
+          <a class="btn btn--primary" href="#menuBlock">Замовити</a>
+          <a class="btn btn--ghost" href="#actions">Акції</a>
+        </div>
 
-    <input
-      id="search"
-      class="search"
-      type="search"
-      placeholder="Пошук по меню…"
-      autocomplete="off"
-    />
-  </div>
+        <div class="hero__features">
+          <div class="hero-feature">
+            <div class="hero-feature__ico">🚚</div>
+            <div><b>Доставка</b><div class="muted">Швидко і гаряче</div></div>
+          </div>
 
-  <h2 id="sectionTitle" class="section-title">Меню</h2>
+          <div class="hero-feature">
+            <div class="hero-feature__ico">💳</div>
+            <div><b>Оплата</b><div class="muted">Картка / готівка</div></div>
+          </div>
 
-  <div id="menu" class="menu"></div>
-</main>
+          <div class="hero-feature">
+            <div class="hero-feature__ico">🔥</div>
+            <div><b>Хіт тижня</b><div class="muted">Топ продажів</div></div>
+          </div>
 
-<!-- Модалка кошика -->
-<div class="modal" id="modal">
-  <div class="modal__content">
-    <div class="modal__head">
-      <h3>🛒 Кошик</h3>
-      <button class="btn-ghost" id="closeModal">Закрити</button>
-    </div>
+          <div class="hero-feature">
+            <div class="hero-feature__ico">🎁</div>
+            <div><b>Бонуси</b><div class="muted">Для постійних</div></div>
+          </div>
+        </div>
+      </div>
 
-    <div id="cartItems" class="cart-items"></div>
-
-    <div class="modal__foot">
-      <div><b>Разом:</b> <span id="cartTotal">0</span> грн</div>
-      <div class="modal__actions">
-        <button class="btn-ghost" id="clearCart">Очистити</button>
-        <button id="orderBtn">Замовити</button>
+      <div class="hero__right">
+        <img class="hero__img" src="images/pepperoni.jpg" alt="Піца Varan">
       </div>
     </div>
+  </section>
 
-    <p class="note" id="orderHint"></p>
+  <!-- ===== PROMOS ===== -->
+  <section class="section" id="actions">
+    <div class="wrap">
+      <h2 class="section-title section-title--new">Акції</h2>
+      <div class="promos" id="promos"></div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <main class="wrap" id="menuBlock">
+    <h2 id="sectionTitle" class="section-title section-title--new">Меню</h2>
+    <div id="menu" class="menu menu--new"></div>
+  </main>
+
+  <!-- ===== CART MODAL ===== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__content" role="dialog" aria-modal="true" aria-label="Кошик">
+
+      <div class="modal__head">
+        <h3>🛒 Кошик</h3>
+        <button class="btn-ghost" id="closeModal" type="button">Закрити</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="order-form">
+        <label class="field">
+          <span>👤 Імʼя</span>
+          <input id="custName" type="text" placeholder="Ваше імʼя" autocomplete="name">
+        </label>
+
+        <label class="field">
+          <span>📞 Телефон</span>
+          <input id="custPhone" type="tel" placeholder="+380…" autocomplete="tel">
+        </label>
+
+        <label class="field">
+          <span>🚚 Доставка чи самовивіз?</span>
+          <select id="deliveryType" class="select">
+            <option value="delivery">Доставка</option>
+            <option value="pickup">Самовивіз</option>
+          </select>
+        </label>
+
+        <label class="field" id="addrWrap">
+          <span>📍 Адреса доставки</span>
+          <input id="custAddr" type="text" placeholder="Вулиця, будинок, підʼїзд…">
+        </label>
+
+        <label class="field">
+          <span>📝 Коментар</span>
+          <input id="custComment" type="text" placeholder="Напр. без цибулі, код домофону…">
+        </label>
+      </div>
+
+      <!-- показ доставки окремо (як у тебе) -->
+      <div class="modal__foot">
+        <div class="totals">
+          <div><b>Сума:</b> <span id="itemsSum">0</span></div>
+          <div><b>Доставка:</b> <span id="deliveryCost">0</span></div>
+          <div><b>Разом:</b> <span id="cartTotal">0</span></div>
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn-ghost" id="clearCart" type="button">Очистити</button>
+          <button id="orderBtn" type="button">Замовити</button>
+        </div>
+      </div>
+
+      <p class="note" id="orderHint"></p>
+    </div>
   </div>
-</div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

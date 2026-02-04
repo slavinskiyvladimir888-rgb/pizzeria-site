@@ -1,0 +1,451 @@
+{
+  "currency": "грн",
+  "delivery": {
+    "fee": 100,
+    "freeFrom": 700
+  },
+  "categories": [
+    {
+      "id": "pizza",
+      "title": "🍕 Піца"
+    },
+    {
+      "id": "salads",
+      "title": "🥗 Салати"
+    },
+    {
+      "id": "snacks",
+      "title": "🍗 Закуски"
+    },
+    {
+      "id": "combo",
+      "title": "🎁 Комбо"
+    },
+    {
+      "id": "wok",
+      "title": "🍜 WOK"
+    },
+    {
+      "id": "drinks",
+      "title": "🥤 Напої"
+    }
+  ],
+  "promos": [
+    {
+      "id": "free_delivery",
+      "title": "🚚 Безкоштовна доставка",
+      "desc": "При замовленні від 700 грн доставка — безкоштовно"
+    },
+    {
+      "id": "weekday",
+      "title": "🍕 -10% у будні",
+      "desc": "Знижка 10% з понеділка по пʼятницю"
+    },
+    {
+      "id": "gift",
+      "title": "🎁 Подарунок",
+      "desc": "Сирний соус у подарунок при замовленні від 500 грн"
+    }
+  ],
+  "products": [
+    {
+      "id": "pizza_meat_vibe",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Мʼясний вайб",
+      "badges": [
+        "hit"
+      ],
+      "image": "images/meat-vibe.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 190
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 345
+        }
+      ]
+    },
+    {
+      "id": "pizza_hawaiian",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Гавайська",
+      "image": "images/hawaiian.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 149
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 255
+        }
+      ]
+    },
+    {
+      "id": "pizza_four_cheese",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Кватро формаджо",
+      "image": "images/four-cheese.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 178
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 320
+        }
+      ]
+    },
+    {
+      "id": "pizza_bbq",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "BBQ",
+      "image": "images/bbq.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 195
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 345
+        }
+      ]
+    },
+    {
+      "id": "pizza_diablo",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Діабло",
+      "badges": [
+        "hot"
+      ],
+      "image": "images/diablo.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 215
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 380
+        }
+      ]
+    },
+    {
+      "id": "pizza_duet",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Дует",
+      "image": "images/duet.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 195
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 345
+        }
+      ]
+    },
+    {
+      "id": "pizza_margherita",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Маргарита",
+      "image": "images/margarita.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 195
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 205
+        }
+      ]
+    },
+    {
+      "id": "pizza_hunters",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Мисливська",
+      "image": "images/hunters.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 175
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 305
+        }
+      ]
+    },
+    {
+      "id": "pizza_paprika",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Паприка",
+      "image": "images/paprika.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 215
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 385
+        }
+      ]
+    },
+    {
+      "id": "pizza_pepperoni",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Пепероні",
+      "image": "images/pepperoni.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 155
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 260
+        }
+      ]
+    },
+    {
+      "id": "pizza_tiaro",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Тіаро",
+      "image": "images/tiaro.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 168
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 299
+        }
+      ]
+    },
+    {
+      "id": "pizza_caesar",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Цезар",
+      "image": "images/ceasar.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 205
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 389
+        }
+      ]
+    },
+    {
+      "id": "pizza_chicken_cheese",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Чікен чіз",
+      "image": "images/chicken-cheese.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 165
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 280
+        }
+      ]
+    },
+    {
+      "id": "pizza_tokyo",
+      "categoryId": "pizza",
+      "type": "pizza",
+      "name": "Токіо",
+      "image": "images/tokyo.jpg",
+      "variants": [
+        {
+          "key": "30",
+          "label": "30 см",
+          "price": 198
+        },
+        {
+          "key": "40",
+          "label": "40 см",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "id": "salad_caesar",
+      "categoryId": "salads",
+      "type": "item",
+      "name": "Цезар",
+      "desc": "300 г",
+      "image": "images/salad-caesar.jpg",
+      "price": 195
+    },
+    {
+      "id": "salad_hot_shrimp",
+      "categoryId": "salads",
+      "type": "item",
+      "name": "Гарячий салат з креветкою",
+      "desc": "300 г",
+      "image": "images/salad-hot-shrimp.jpg",
+      "price": 235
+    },
+    {
+      "id": "salad_chicken_bluecheese",
+      "categoryId": "salads",
+      "type": "item",
+      "name": "Салат з куркою блю-чіз",
+      "desc": "300 г",
+      "image": "images/salad-chicken-bluecheese.jpg",
+      "price": 195
+    },
+    {
+      "id": "wok_udon_chicken",
+      "categoryId": "wok",
+      "type": "item",
+      "name": "Удон з куркою",
+      "desc": "300 г",
+      "image": "images/udon-chicken.jpg",
+      "price": 148
+    },
+    {
+      "id": "wok_udon_shrimp",
+      "categoryId": "wok",
+      "type": "item",
+      "name": "Удон з креветкою",
+      "desc": "300 г",
+      "image": "images/udon-shrimp.jpg",
+      "price": 195
+    },
+    {
+      "id": "cheese_balls",
+      "categoryId": "snacks",
+      "type": "item",
+      "name": "Сирні кульки",
+      "desc": "125 г",
+      "image": "images/cheese-balls.jpg",
+      "price": 89
+    },
+    {
+      "id": "strips",
+      "categoryId": "snacks",
+      "type": "item",
+      "name": "Курячі стріпси",
+      "desc": "120 г",
+      "image": "images/strips.jpg",
+      "price": 89
+    },
+    {
+      "id": "nuggets",
+      "categoryId": "snacks",
+      "type": "options",
+      "name": "Курячі нагетси",
+      "image": "images/nuggets.jpg",
+      "options": [
+        {
+          "label": "6 шт",
+          "price": 89
+        },
+        {
+          "label": "9 шт",
+          "price": 125
+        },
+        {
+          "label": "20 шт",
+          "price": 264
+        }
+      ]
+    },
+    {
+      "id": "fries",
+      "categoryId": "snacks",
+      "type": "options",
+      "name": "Картопля фрі",
+      "image": "images/fries.jpg",
+      "options": [
+        {
+          "label": "90 г",
+          "price": 60
+        },
+        {
+          "label": "120 г",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "id": "party_mix",
+      "categoryId": "snacks",
+      "type": "options",
+      "name": "Паті мікс",
+      "desc": "стріпси + фрі + сирні кульки + гриби фрі",
+      "image": "images/party-mix.jpg",
+      "options": [
+        {
+          "label": "500 г",
+          "price": 335
+        },
+        {
+          "label": "1 кг",
+          "price": 648
+        }
+      ]
+    },
+    {
+      "id": "soon_burgers",
+      "categoryId": "combo",
+      "type": "item",
+      "name": "Бургери",
+      "desc": "Скоро в меню",
+      "price": null
+    }
+  ]
+}
