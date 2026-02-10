@@ -134,19 +134,15 @@ function openOrderOptions() {
   if (orderOptionsHint) orderOptionsHint.textContent = "";
   const text = buildOrderText();
 
-  // Telegram через номер телефону (username НЕ потрібен)
+  // Telegram через номер (username не потрібен)
   const TG_PHONE = "+380973719397";
   const tgUrl = `https://t.me/${TG_PHONE.replace("+", "")}?text=${encodeURIComponent(text)}`;
 
-  // Viber
-  const VIBER_NUMBER = "+380973719397";
-  const viberUrl = `viber://chat?number=${encodeURIComponent(VIBER_NUMBER)}`;
-
   if (orderTelegram) orderTelegram.href = tgUrl;
-  if (orderViber) orderViber.href = viberUrl;
 
   orderOptions.classList.add("show");
 }
+
 
 function closeOrderOptions() {
   orderOptions?.classList.remove("show");
@@ -524,6 +520,26 @@ deliveryType?.addEventListener("change", () => {
 });
 
 // ===== ORDER OPTIONS EVENTS =====
+orderViber?.addEventListener("click", async () => {
+  const text = buildOrderText();
+
+  // 1) копіюємо текст замовлення
+  try {
+    await navigator.clipboard.writeText(text);
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent = "✅ Текст скопійовано. Зараз відкрию Viber — встав (Paste) і відправ.";
+    }
+  } catch (e) {
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent = "⚠️ Не вдалось скопіювати автоматично. Натисни кнопку 'Скопіювати текст замовлення'.";
+    }
+  }
+
+  // 2) відкриваємо Viber чат
+  const VIBER_NUMBER = "+380973719397";
+  const viberUrl = `viber://chat?number=${encodeURIComponent(VIBER_NUMBER)}`;
+  window.location.href = viberUrl;
+});
 orderCopy?.addEventListener("click", async () => {
   try {
     const text = buildOrderText();
