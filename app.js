@@ -34,6 +34,14 @@ const addrWrap = document.getElementById("addrWrap");
 const deliveryCostEl = document.getElementById("deliveryCost");
 const itemsSumEl = document.getElementById("itemsSum");
 
+// Order options modal
+const orderOptions = document.getElementById("orderOptions");
+const closeOrderOptionsBtn = document.getElementById("closeOrderOptions");
+const orderTelegram = document.getElementById("orderTelegram");
+const orderViber = document.getElementById("orderViber");
+const orderCopy = document.getElementById("orderCopy");
+const orderOptionsHint = document.getElementById("orderOptionsHint");
+
 // ================= STATE =================
 let activeCat = "pizza";
 
@@ -77,21 +85,94 @@ function loadCart() {
   }
 }
 
+// ================= ORDER TEXT / OPTIONS =================
+function buildOrderText() {
+  const name = document.getElementById("custName")?.value?.trim() || "";
+  const phone = document.getElementById("custPhone")?.value?.trim() || "";
+  const addr = document.getElementById("custAddr")?.value?.trim() || "";
+  const comment = document.getElementById("custComment")?.value?.trim() || "";
+  const isDelivery = deliveryType?.value === "delivery";
+
+  let itemsSum = 0;
+  const lines = [];
+
+  for (const item of cart.values()) {
+    const line = item.qty * item.price;
+    itemsSum += line;
+    lines.push(`• ${item.name} — ${item.qty} × ${item.price} = ${line} ${currency()}`);
+  }
+
+  const delivery = isDelivery ? getDeliveryCost(itemsSum) : 0;
+  const total = itemsSum + delivery;
+
+  const parts = [];
+  parts.push("🛒 Замовлення Varan");
+  if (name) parts.push(`👤 Імʼя: ${name}`);
+  if (phone) parts.push(`📞 Телефон: ${phone}`);
+  parts.push(isDelivery ? "🚚 Доставка" : "🏠 Самовивіз");
+  if (isDelivery && addr) parts.push(`📍 Адреса: ${addr}`);
+  if (comment) parts.push(`📝 Коментар: ${comment}`);
+
+  parts.push("");
+  parts.push("🍽️ Позиції:");
+  parts.push(...lines);
+
+  parts.push("");
+  parts.push(`💰 Сума: ${itemsSum} ${currency()}`);
+  parts.push(
+    isDelivery
+      ? `🚚 Доставка: ${delivery === 0 ? "Безкоштовно ✅" : `${delivery} ${currency()}`}`
+      : "🚚 Доставка: 0"
+  );
+  parts.push(`✅ Разом: ${total} ${currency()}`);
+
+  return parts.join("\n");
+}
+function openOrderOptions() {
+  if (!orderOptions) return;
+
+  if (orderOptionsHint) orderOptionsHint.textContent = "";
+  const text = buildOrderText();
+
+  // Telegram через номер телефону (username НЕ потрібен)
+  const TG_PHONE = "+380973719397";
+  const tgUrl = `https://t.me/${TG_PHONE.replace("+", "")}?text=${encodeURIComponent(text)}`;
+
+  // Viber
+  const VIBER_NUMBER = "+380973719397";
+  const viberUrl = `viber://chat?number=${encodeURIComponent(VIBER_NUMBER)}`;
+
+  if (orderTelegram) orderTelegram.href = tgUrl;
+  if (orderViber) orderViber.href = viberUrl;
+
+  orderOptions.classList.add("show");
+}
+
+function closeOrderOptions() {
+  orderOptions?.classList.remove("show");
+}
+
 // ================= CART UI =================
 function updateBadge() {
   let count = 0;
   let sum = 0;
+
   for (const item of cart.values()) {
     count += item.qty;
     sum += item.qty * item.price;
   }
+
   if (cartCount) cartCount.textContent = count;
-  if (cartFabSum) cartFabSum.textContent = sum;
+
+  // показуємо суму в floating з валютою
+  if (cartFabSum) cartFabSum.textContent = `${sum} ${currency()}`;
+
   if (cartFab) cartFab.classList.toggle("show", count > 0);
 }
 
 function addToCart(key, name, price) {
   if (!Number.isFinite(price)) return;
+
   if (cart.has(key)) cart.get(key).qty += 1;
   else cart.set(key, { name, price, qty: 1 });
 
@@ -149,10 +230,7 @@ function renderPromos() {
 function badgeHtml(badges = []) {
   const map = { hit: "ХІТ", hot: "ГОСТРА", new: "НОВИНКА" };
   return (badges || [])
-    .map(
-      (b) =>
-        `<span class="badge ${escapeHtml(b)}">${escapeHtml(map[b] || "")}</span>`
-    )
+    .map((b) => `<span class="badge ${escapeHtml(b)}">${escapeHtml(map[b] || "")}</span>`)
     .join("");
 }
 
@@ -194,7 +272,8 @@ function renderCardWithSelect(p, variants) {
           ${escapeHtml(p.name)} ${badgeHtml(p.badges)}
         </div>
 
-        ${p.desc ? `<div class="card__desc">${escapeHtml(p.desc)}</div>` : ""}
+        ${p.desc ? `<div class="card__desc desc--weight">${escapeHtml(p.desc)}</div>` : ""}
+        ${p.ingredients ? `<div class="card__ingredients">${escapeHtml(p.ingredients)}</div>` : ""}
 
         <select class="select" data-variant-select>
           ${opts}
@@ -222,7 +301,8 @@ function renderSimpleCard(p) {
           ${escapeHtml(p.name)} ${badgeHtml(p.badges)}
         </div>
 
-        ${p.desc ? `<div class="card__desc">${escapeHtml(p.desc)}</div>` : ""}
+        ${p.desc ? `<div class="card__desc desc--weight">${escapeHtml(p.desc)}</div>` : ""}
+        ${p.ingredients ? `<div class="card__ingredients">${escapeHtml(p.ingredients)}</div>` : ""}
 
         <div class="row">
           <span class="price">${hasPrice ? money(p.price) : "Скоро"}</span>
@@ -246,13 +326,13 @@ function paintCardVariantPrice(card) {
 }
 
 function renderMenu() {
-  if (!menuEl) return;
+  if (!menuEl || !sectionTitleEl) return;
 
   const cats = DATA?.categories || [];
   const products = DATA?.products || [];
 
   const title = cats.find((c) => c.id === activeCat)?.title || "Меню";
-  if (sectionTitleEl) sectionTitleEl.textContent = title;
+  sectionTitleEl.textContent = title;
 
   const filtered = products.filter((p) => p.categoryId === activeCat);
 
@@ -389,13 +469,18 @@ function closeCart() {
   modal?.classList.remove("show");
 }
 
+// Auto-open cart on cart page
+if (document.body.classList.contains("page-cart")) {
+  modal?.classList.add("show");
+}
+
 // ================= ORDER =================
 orderBtn?.addEventListener("click", () => {
   if (!cart.size) {
     if (orderHint) orderHint.textContent = "Кошик порожній 🙂";
     return;
   }
-  alert("Замовлення готове до відправки в Telegram 😉");
+  openOrderOptions();
 });
 
 // ================= INIT =================
@@ -421,6 +506,7 @@ async function init() {
   }
 }
 
+// ================= GLOBAL EVENTS =================
 cartBtn?.addEventListener("click", openCart);
 cartFabBtn?.addEventListener("click", openCart);
 closeModal?.addEventListener("click", closeCart);
@@ -437,4 +523,24 @@ deliveryType?.addEventListener("change", () => {
   renderCart();
 });
 
+// ===== ORDER OPTIONS EVENTS =====
+orderCopy?.addEventListener("click", async () => {
+  try {
+    const text = buildOrderText();
+    await navigator.clipboard.writeText(text);
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent =
+        "✅ Текст скопійовано. Встав у Viber/Telegram або скажи по телефону.";
+    }
+  } catch (e) {
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent =
+        "⚠️ Не вдалось скопіювати. Спробуй з компʼютера або інший браузер.";
+    }
+  }
+});
+
+closeOrderOptionsBtn?.addEventListener("click", closeOrderOptions);
+
+// ===== START =====
 init();
