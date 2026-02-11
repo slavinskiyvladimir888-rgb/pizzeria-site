@@ -441,6 +441,20 @@
       ]
     },
     {
+  "id": "mushrooms_fry",
+  "categoryId": "snacks",
+  "type": "snack",
+  "name": "Гриби фрі",
+  "image": "images/mushrooms-fry.jpg",
+  "desc": "Печериці в хрусткій паніровці",
+  "variants": [
+    { "key": "std", "label": "Порція", "price": 79 }
+  ]
+},
+
+    {
+  
+
       "id": "party_mix",
       "categoryId": "snacks",
       "type": "options",
@@ -468,3 +482,4 @@
     }
   ]
 }
+

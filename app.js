@@ -560,3 +560,38 @@ closeOrderOptionsBtn?.addEventListener("click", closeOrderOptions);
 
 // ===== START =====
 init();
+
+// ===== MOBILE DRAWER (burger menu) =====
+(() => {
+  const burger = document.getElementById("burgerBtn");
+  const drawer = document.getElementById("mobileDrawer");
+  const close = document.getElementById("closeDrawer");
+  if (!burger || !drawer || !close) return;
+
+  const openDrawer = () => {
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeDrawer = () => {
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  burger.addEventListener("click", openDrawer);
+  close.addEventListener("click", closeDrawer);
+
+  drawer.addEventListener("click", (e) => {
+    if (e.target === drawer) closeDrawer();
+  });
+
+  drawer.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", closeDrawer);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
+})();

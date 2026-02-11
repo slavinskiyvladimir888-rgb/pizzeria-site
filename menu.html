@@ -14,7 +14,7 @@
   <!-- Floating кошик (на мобілці) -->
   <div class="cart-fab" id="cartFab">
     <div class="cart-fab__sum">Сума: <span id="cartFabSum">0</span></div>
-    <button class="cart-fab__btn" id="cartFabBtn" type="button">Оформити</button>
+    <button class="cart-fab__btn" id="cartFabBtn" type="button">🛒 Кошик</button>
   </div>
 
   <!-- ===== HEADER ===== -->
@@ -30,15 +30,28 @@
             </div>
           </div>
 
-          <div class="header-actions header-actions--new">
-            <a class="cart-btn" href="index.html">🏠 Головна</a>
-            <a class="cart-btn" href="menu.html">🍕 Меню</a>
-            <a class="cart-btn" href="cart.html">✅ Оформити</a>
+                    <div class="header-actions header-actions--new">
 
-            <a class="call-btn call-btn--new" href="tel:+380973719397">📞 Подзвонити</a>
-            <button class="cart-btn cart-btn--new" id="cartBtn" type="button">
-              🛒 Кошик <span class="cart-badge" id="cartCount">0</span>
+            <div class="nav-desktop">
+              <a class="cart-btn" href="index.html">🏠 Головна</a>
+              <a class="cart-btn" href="menu.html">🍕 Меню</a>
+              <a class="cart-btn" href="promo.html">🔥 Акції</a>
+              <a class="cart-btn" href="about.html">ℹ️ Про нас</a>
+            </div>
+
+            <a class="call-btn call-btn--new" href="tel:+380973719397" aria-label="Подзвонити">
+              <span class="call-btn__icon">📞</span>
+              <span class="call-btn__text">Подзвонити</span>
+            </a>
+
+            <button class="cart-btn cart-btn--new" id="cartBtn" type="button" aria-label="Кошик">
+              <span class="cart-btn__icon">🛒</span>
+              <span class="cart-btn__text">Кошик</span>
+              <span class="cart-badge" id="cartCount">0</span>
             </button>
+
+            <button class="cart-btn burger-btn" id="burgerBtn" type="button" aria-label="Меню">☰</button>
+
           </div>
         </div>
 
@@ -49,6 +62,26 @@
       </div>
     </div>
   </header>
+
+  <!-- ===== MOBILE DRAWER NAV ===== -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer__panel" role="dialog" aria-modal="true" aria-label="Навігація">
+      <div class="mobile-drawer__head">
+        <b>Навігація</b>
+        <button class="btn-ghost" id="closeDrawer" type="button" aria-label="Закрити">✕</button>
+      </div>
+
+      <a class="drawer-link" href="index.html">🏠 Головна</a>
+      <a class="drawer-link" href="menu.html">🍕 Меню</a>
+      <a class="drawer-link" href="promo.html">🔥 Акції</a>
+      <a class="drawer-link" href="about.html">ℹ️ Про нас</a>
+
+      <div class="drawer-sep"></div>
+
+      <a class="drawer-link" href="tel:+380973719397">📞 Подзвонити</a>
+    </div>
+  </div>
+
 
   <!-- ===== MENU ===== -->
   <main class="wrap" id="menuBlock">
@@ -130,9 +163,9 @@
       </div>
 
       <p class="note" id="orderOptionsHint"></p>
-    <p class="note" style="margin-top:10px; opacity:.85;">
-  💡 Якщо у Viber текст не зʼявився — він уже <b>скопійований</b>. Просто натисни <b>Вставити (Paste)</b> у полі повідомлення і відправ.
-</p>
+      <p class="note" style="margin-top:10px; opacity:.85;">
+        💡 Якщо у Viber текст не зʼявився — він уже <b>скопійований</b>. Просто натисни <b>Вставити (Paste)</b> у полі повідомлення і відправ.
+      </p>
     </div>
   </div>
 

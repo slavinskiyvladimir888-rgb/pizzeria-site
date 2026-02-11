@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <title>Varan — доставка</title>
+  <title>Про нас — Varan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -56,9 +56,7 @@
           </div>
         </div>
 
-        <!-- tabs потрібні для app.js (на головній можемо сховати) -->
         <div class="tabs tabs--header tabs--tworows" id="tabs" style="display:none"></div>
-
         <div class="hot-badge">🔥 HOT</div>
 
       </div>
@@ -85,62 +83,50 @@
   </div>
 
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="top">
-    <div class="wrap hero__inner">
-      <div class="hero__left">
-        <h1 class="hero__title hero__title--gradient">Ну що, замовляємо?</h1>
-
-        <div class="hero__buttons">
-          <a class="btn btn--primary" href="menu.html">Замовити</a>
-          <a class="btn btn--ghost" href="promo.html">Акції</a>
-          <a class="btn btn--ghost" href="#map">Де ми</a>
-        </div>
-
-        <div class="hero__features">
-          <div class="hero-feature">
-            <div class="hero-feature__ico">🚚</div>
-            <div><b>Доставка</b><div class="muted">Швидко і гаряче</div></div>
-          </div>
-
-          <div class="hero-feature">
-            <div class="hero-feature__ico">💳</div>
-            <div><b>Оплата</b><div class="muted">Картка / готівка</div></div>
-          </div>
-
-          <div class="hero-feature">
-            <div class="hero-feature__ico">🔥</div>
-            <div><b>Хіт тижня</b><div class="muted">Топ продажів</div></div>
-          </div>
-
-          <div class="hero-feature">
-            <div class="hero-feature__ico">🎁</div>
-            <div><b>Бонуси</b><div class="muted">Для постійних</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__right">
-        <img class="hero__img" src="images/pepperoni.jpg" alt="Піца Varan">
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROMOS ===== -->
-  <section class="section" id="actions">
+  <section class="section" style="padding-top:18px;">
     <div class="wrap">
-      <h2 class="section-title section-title--new">Акції</h2>
-      <div class="promos" id="promos"></div>
+      <h1 class="section-title section-title--new">ℹ️ Про нас</h1>
+      <p class="muted" style="margin-top:-8px;">Varan — це стріт-фуд з характером. Готуємо так, щоб хотілось ще 😈</p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h2>Хто ми</h2>
+          <p>
+            Ми робимо піцу, WOK і закуски зі свіжих інгредієнтів.
+            Наша фішка — <b>смак</b>, <b>швидкість</b> і <b>щедрі порції</b>.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h2>Чому Varan</h2>
+          <ul class="about-list">
+            <li>🔥 Свіже тісто та соуси</li>
+            <li>🍗 Реальні порції (не “для вигляду”)</li>
+            <li>⚡ Швидка доставка по місту</li>
+            <li>💳 Зручно: готівка / картка</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <h2>Як замовити</h2>
+          <p>Відкрий <b>Меню</b>, додай в кошик і натисни <b>Замовити</b> — обереш Telegram / Viber / дзвінок.</p>
+          <a class="btn btn--primary" href="menu.html">Перейти в меню →</a>
+        </div>
+
+        <div class="about-card">
+          <h2>Контакти</h2>
+          <p><b>Телефон:</b> <a href="tel:+380973719397">+38 097 371 93 97</a></p>
+          <p class="muted">Працюємо щодня • Самовивіз і доставка</p>
+        </div>
+      </div>
+
+      <div class="neon-note">
+        💡 Хочеш — додамо сюди фотки закладу/кухні + блок “Відгуки”, це дуже піднімає довіру.
+      </div>
     </div>
   </section>
 
-  <!-- ===== MENU (захований, але потрібний app.js) ===== -->
-  <main class="wrap" id="menuBlock" style="display:none">
-    <h2 id="sectionTitle" class="section-title section-title--new">Меню</h2>
-    <div id="menu" class="menu menu--new"></div>
-  </main>
-
-  <!-- ===== CART MODAL (потрібна app.js) ===== -->
+  <!-- ===== CART MODAL (щоб працював кошик) ===== -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal__content" role="dialog" aria-modal="true" aria-label="Кошик">
 
@@ -198,24 +184,6 @@
     </div>
   </div>
 
-  <!-- ===== MAP ===== -->
-  <section class="map-section" id="map">
-    <div class="wrap">
-      <h2 class="section-title section-title--new">📍 Де ми знаходимось</h2>
-      <p class="muted" style="margin-top:-6px;">Самовивіз та доставка по місту</p>
-
-      <div class="map-wrap">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.896991136081!2d33.26366453131935!3d47.686420418090634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40db2d69f278e067%3A0xb236ca3eea952b1f!2z0JrQsNGE0LUt0L_RltGG0LXRgNGW0Y8gVmFyYW4!5e0!3m2!1suk!2sua!4v1770711333929!5m2!1suk!2sua"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== ORDER OPTIONS MODAL ===== -->
   <div class="modal" id="orderOptions" aria-hidden="true">
     <div class="modal__content" role="dialog" aria-modal="true" aria-label="Спосіб замовлення">
@@ -239,5 +207,41 @@
   </div>
 
   <script src="app.js"></script>
+
+  <style>
+    .about-grid{
+      margin-top:16px;
+      display:grid;
+      gap:16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .about-card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
+    }
+    .about-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(520px 220px at 10% 0%, rgba(255,43,220,.18), transparent 60%),
+                  radial-gradient(520px 220px at 90% 100%, rgba(0,240,255,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .about-card h2{ margin:0 0 8px; font-size:18px; position:relative; }
+    .about-card p, .about-card ul{ position:relative; }
+    .about-list{ margin:0; padding-left:18px; }
+    .about-list li{ margin:6px 0; }
+    .neon-note{
+      margin-top:16px;
+      padding:12px 14px;
+      border-radius: 14px;
+      background: rgba(0,240,255,.08);
+      border: 1px solid rgba(0,240,255,.18);
+    }
+  </style>
+
 </body>
 </html>
