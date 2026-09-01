@@ -128,21 +128,17 @@ function buildOrderText() {
 
   return parts.join("\n");
 }
+
 function openOrderOptions() {
   if (!orderOptions) return;
 
   if (orderOptionsHint) orderOptionsHint.textContent = "";
-  const text = buildOrderText();
 
-  // Telegram через номер (username не потрібен)
-  const TG_PHONE = "+380973719397";
-  const tgUrl = `https://t.me/${TG_PHONE.replace("+", "")}?text=${encodeURIComponent(text)}`;
-
-  if (orderTelegram) orderTelegram.href = tgUrl;
+  // ✅ Telegram: одразу чат піцерії (без share-вибору)
+  if (orderTelegram) orderTelegram.href = "https://t.me/varan_pizza";
 
   orderOptions.classList.add("show");
 }
-
 
 function closeOrderOptions() {
   orderOptions?.classList.remove("show");
@@ -483,8 +479,25 @@ orderBtn?.addEventListener("click", () => {
 async function init() {
   loadCart();
 
-  const res = await fetch("products.json");
-  DATA = await res.json();
+  try {
+    const res = await fetch("products.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`products.json error: ${res.status}`);
+    DATA = await res.json();
+  } catch (e) {
+    console.error(e);
+    // Мінімальний фолбек, щоб сторінка не "ламалась"
+    DATA = {
+      currency: "грн",
+      categories: [],
+      products: [],
+      promos: [],
+      delivery: { fee: DELIVERY_FEE, freeFrom: FREE_DELIVERY_FROM },
+    };
+    if (sectionTitleEl) sectionTitleEl.textContent = "Меню";
+    if (menuEl)
+      menuEl.innerHTML = `<p class="note">⚠️ Не вдалося завантажити меню. Перезавантаж сторінку або перевір products.json</p>`;
+    return;
+  }
 
   DELIVERY_FEE = DATA?.delivery?.fee ?? DELIVERY_FEE;
   FREE_DELIVERY_FROM = DATA?.delivery?.freeFrom ?? FREE_DELIVERY_FROM;
@@ -520,27 +533,68 @@ deliveryType?.addEventListener("change", () => {
 });
 
 // ===== ORDER OPTIONS EVENTS =====
-orderViber?.addEventListener("click", async () => {
+
+// ✅ Telegram: відкриваємо одразу чат + копіюємо текст замовлення
+orderTelegram?.addEventListener("click", async (e) => {
+  e.preventDefault();
+
   const text = buildOrderText();
 
   // 1) копіюємо текст замовлення
   try {
     await navigator.clipboard.writeText(text);
     if (orderOptionsHint) {
-      orderOptionsHint.textContent = "✅ Текст скопійовано. Зараз відкрию Viber — встав (Paste) і відправ.";
+      orderOptionsHint.textContent =
+        "✅ Текст замовлення скопійовано. Відкриваю Telegram — встав (Paste) і відправ.";
     }
-  } catch (e) {
+  } catch (err) {
     if (orderOptionsHint) {
-      orderOptionsHint.textContent = "⚠️ Не вдалось скопіювати автоматично. Натисни кнопку 'Скопіювати текст замовлення'.";
+      orderOptionsHint.textContent =
+        "ℹ️ Відкриваю Telegram. Якщо текст не скопіювався — натисни 'Скопіювати текст замовлення'.";
+    }
+  }
+
+  // 2) відкриваємо чат піцерії
+  const tgDeep = "tg://resolve?domain=varan_pizza"; // app (телефон)
+  const tgWeb = "https://t.me/varan_pizza"; // запасний варіант
+
+  window.location.href = tgDeep;
+
+  setTimeout(() => {
+    window.open(tgWeb, "_blank");
+  }, 450);
+});
+
+orderViber?.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const text = buildOrderText();
+
+  // 1) копіюємо текст замовлення
+  try {
+    await navigator.clipboard.writeText(text);
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent =
+        "✅ Текст скопійовано. Зараз відкрию Viber — встав (Paste) і відправ.";
+    }
+  } catch (err) {
+    if (orderOptionsHint) {
+      orderOptionsHint.textContent =
+        "⚠️ Не вдалось скопіювати автоматично. Натисни кнопку 'Скопіювати текст замовлення'.";
     }
   }
 
   // 2) відкриваємо Viber чат
   const VIBER_NUMBER = "+380973719397";
   const viberUrl = `viber://chat?number=${encodeURIComponent(VIBER_NUMBER)}`;
-  window.location.href = viberUrl;
+
+  // маленька затримка, щоб підказка встигла показатись
+  setTimeout(() => {
+    window.location.href = viberUrl;
+  }, 150);
 });
-orderCopy?.addEventListener("click", async () => {
+
+orderCopy?.addEventListener("click", async (e) => {
+  e.preventDefault();
   try {
     const text = buildOrderText();
     await navigator.clipboard.writeText(text);
@@ -548,7 +602,7 @@ orderCopy?.addEventListener("click", async () => {
       orderOptionsHint.textContent =
         "✅ Текст скопійовано. Встав у Viber/Telegram або скажи по телефону.";
     }
-  } catch (e) {
+  } catch (err) {
     if (orderOptionsHint) {
       orderOptionsHint.textContent =
         "⚠️ Не вдалось скопіювати. Спробуй з компʼютера або інший браузер.";

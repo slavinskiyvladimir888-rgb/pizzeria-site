@@ -646,7 +646,25 @@ button:active{ transform: translateY(1px) scale(0.98); }
   padding:14px;
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
+
+  /* ✅ FIX: footer button always visible on mobile */
+  display:flex;
+  flex-direction:column;
+  max-height: 90vh;
+  overflow:hidden;
 }
+@supports (height: 100dvh){
+  .modal__content{ max-height: 90dvh; }
+}
+
+.modal__body{
+  flex: 1 1 auto;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 4px;
+  padding-bottom: 12px;
+}
+
 
 .modal__head, .modal__foot{
   display:flex;
@@ -655,6 +673,17 @@ button:active{ transform: translateY(1px) scale(0.98); }
   gap:12px;
 }
 
+/* sticky footer so "Замовити" never disappears */
+.modal__foot{
+  position: sticky;
+  bottom: 0;
+  background: rgba(12,14,20,.92);
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+
 .totals{
   display:grid;
   gap:6px;
@@ -662,11 +691,15 @@ button:active{ transform: translateY(1px) scale(0.98); }
 }
 
 .cart-items{
-  margin:12px 0;
+  margin: 12px 0;
   display:flex;
   flex-direction:column;
   gap:10px;
 }
+
+/* inside modal scroll area: let list shrink and scroll nicely */
+.modal__body .cart-items{ margin-top: 12px; margin-bottom: 12px; }
+
 
 .cart-row{
   display:flex;
@@ -1069,19 +1102,30 @@ button:active{ transform: translateY(1px) scale(0.98); }
   /* allow wrap if needed */
   .header__inner--new{ flex-wrap:wrap; }
 }
-
 /* ===== Mobile drawer ===== */
 .mobile-drawer{
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.62);
   backdrop-filter: blur(6px);
-  display: none;
+  display: none;            /* ✅ завжди приховано за замовчуванням */
   z-index: 9999;
 }
-.mobile-drawer.is-open{ display:block; }
+
+/* ✅ відкриття тільки коли додамо клас is-open */
+.mobile-drawer.is-open{
+  display: block;
+}
+
+/* ✅ на компі drawer не показуємо НІКОЛИ */
+@media (min-width: 769px){
+  .mobile-drawer{
+    display: none !important;
+  }
+}
+
 .mobile-drawer__panel{
-  position:absolute;
+  position: absolute;
   top: 12px;
   right: 12px;
   left: 12px;
@@ -1093,24 +1137,64 @@ button:active{ transform: translateY(1px) scale(0.98); }
   padding: 14px;
   box-shadow: 0 25px 90px rgba(0,0,0,.6);
 }
+
 .mobile-drawer__head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
+
 .drawer-link{
-  display:block;
-  padding:12px 12px;
+  display: block;
+  padding: 12px 12px;
   border-radius: 14px;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.10);
   margin: 8px 0;
-  text-decoration:none;
+  text-decoration: none;
 }
+
 .drawer-link:active{ transform: scale(.99); }
+
 .drawer-sep{
-  height:1px;
+  height: 1px;
   background: rgba(255,255,255,.12);
   margin: 10px 0;
+}
+/* ===== FIX: прибрати ліву "Навігацію" на комп'ютері ===== */
+/* (на мобілці залишиться, якщо треба) */
+@media (min-width: 721px){
+  .mobile-drawer,
+  .mobile-drawer__panel,
+  .nav-drawer,
+  .drawer,
+  .drawer-panel,
+  .mobile-nav,
+  .nav-fallback,
+  .nav-mini,
+  .side-nav,
+  .sidebar-nav,
+  .toc,
+  .toc-nav{
+    display: none !important;
+  }
+}
+
+/* На всякий випадок — якщо це <nav aria-label="Навігація"> */
+@media (min-width: 721px){
+  nav[aria-label="Навігація"],
+  nav[aria-label="Навигация"],
+  nav[aria-label="Navigation"]{
+    display:none !important;
+  }
+}
+.promo-status {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
 }

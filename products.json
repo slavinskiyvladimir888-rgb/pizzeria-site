@@ -23,7 +23,11 @@
     },
     {
       "id": "wok",
-      "title": "🍜 WOK"
+      "title": "🍜 WOK/Паста"
+    },
+    {
+      "id": "burgers",
+      "title": "🍔 Бургери"
     },
     {
       "id": "drinks",
@@ -49,6 +53,26 @@
   ],
   "products": [
     {
+      "id": "pasta_chicken_mushrooms",
+      "categoryId": "wok",
+      "type": "item",
+      "name": "Паста Курка & Гриби",
+      "desc": "300 г",
+      "image": "images/pasta-chicken-mushrooms.jpg",
+      "ingredients": "Курка, шампіньйони, вершковий соус, пармезан",
+      "price": 189
+    },
+    {
+      "id": "pasta_4_cheese",
+      "categoryId": "wok",
+      "type": "item",
+      "name": "Паста 4 Сири",
+      "desc": "300 г",
+      "image": "images/pasta-4-cheese.png",
+      "ingredients": "Чеддер, моцарела, сир дор-блю, вершковий сир",
+      "price": 199
+    },
+    {
       "id": "pizza_meat_vibe",
       "categoryId": "pizza",
       "type": "pizza",
@@ -62,12 +86,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 190
+          "price": 195
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 345
+          "price": 349
         }
       ]
     },
@@ -82,12 +106,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 149
+          "price": 165
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 255
+          "price": 269
         }
       ]
     },
@@ -102,12 +126,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 178
+          "price": 189
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 320
+          "price": 329
         }
       ]
     },
@@ -122,12 +146,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 195
+          "price": 198
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 345
+          "price": 349
         }
       ]
     },
@@ -145,12 +169,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 215
+          "price": 219
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 380
+          "price": 389
         }
       ]
     },
@@ -165,12 +189,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 195
+          "price": 198
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 345
+          "price": 348
         }
       ]
     },
@@ -185,12 +209,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 195
+          "price": 119
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 205
+          "price": 199
         }
       ]
     },
@@ -205,12 +229,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 175
+          "price": 189
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 305
+          "price": 329
         }
       ]
     },
@@ -245,12 +269,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 155
+          "price": 179
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 260
+          "price": 299
         }
       ]
     },
@@ -265,7 +289,7 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 168
+          "price": 179
         },
         {
           "key": "40",
@@ -305,12 +329,12 @@
         {
           "key": "30",
           "label": "30 см",
-          "price": 165
+          "price": 175
         },
         {
           "key": "40",
           "label": "40 см",
-          "price": 280
+          "price": 290
         }
       ]
     },
@@ -319,7 +343,7 @@
       "categoryId": "pizza",
       "type": "pizza",
       "name": "Токіо",
-      "image": "images/tokyo.jpg",
+      "image": "images/tokyo.png",
       "desc": "Вершково-грибний соус, моцарела,куряче філе,гриби,соус теріякі",
       "variants": [
         {
@@ -330,7 +354,7 @@
         {
           "key": "40",
           "label": "40 см",
-          "price": 400
+          "price": 345
         }
       ]
     },
@@ -370,7 +394,7 @@
       "type": "item",
       "name": "Удон з куркою",
       "desc": "300 г",
-      "image": "images/udon-chicken.jpg",
+      "image": "images/udon-chicken.png",
       "ingredients": "Лапша удон,куряче філе,болгарський перець,цибуля,гриби,морква,соус теріякі,солодкий чилі,соєвий соус",
       "price": 148
     },
@@ -380,7 +404,7 @@
       "type": "item",
       "name": "Удон з креветкою",
       "desc": "300 г",
-      "image": "images/udon-shrimp.jpg",
+      "image": "images/udon-shrimp.png",
       "ingredients": "Лапша удон,криветка,стручкова фасоль,цибуля,гриби,морква,соус теріякі,солодкий чилі,соєвий соус",
       "price": 195
     },
@@ -390,8 +414,8 @@
       "type": "item",
       "name": "Сирні кульки",
       "desc": "125 г",
-      "image": "images/cheese-balls.jpg",
-      "price": 89
+      "image": "images/cheese-balls.png",
+      "price": 95
     },
     {
       "id": "strips",
@@ -399,27 +423,27 @@
       "type": "item",
       "name": "Курячі стріпси",
       "desc": "120 г",
-      "image": "images/strips.jpg",
-      "price": 89
+      "image": "images/strips.png",
+      "price": 112
     },
     {
       "id": "nuggets",
       "categoryId": "snacks",
       "type": "options",
       "name": "Курячі нагетси",
-      "image": "images/nuggets.jpg",
+      "image": "images/nuggets.png",
       "options": [
         {
           "label": "6 шт",
-          "price": 89
+          "price": 108
         },
         {
           "label": "9 шт",
-          "price": 125
+          "price": 159
         },
         {
           "label": "20 шт",
-          "price": 264
+          "price": 348
         }
       ]
     },
@@ -428,43 +452,39 @@
       "categoryId": "snacks",
       "type": "options",
       "name": "Картопля фрі",
-      "image": "images/fries.jpg",
+      "image": "images/fries.png",
       "options": [
         {
           "label": "90 г",
-          "price": 60
+          "price": 65
         },
         {
           "label": "120 г",
-          "price": 75
+          "price": 79
         }
       ]
     },
     {
-  "id": "mushrooms_fry",
-  "categoryId": "snacks",
-  "type": "snack",
-  "name": "Гриби фрі",
-  "image": "images/mushrooms-fry.jpg",
-  "desc": "Печериці в хрусткій паніровці",
-  "variants": [
-    { "key": "std", "label": "Порція", "price": 79 }
-  ]
-},
-
+      "id": "mushrooms_fry",
+      "categoryId": "snacks",
+      "type": "item",
+      "name": "Гриби фрі",
+      "desc": "Порція",
+      "image": "images/mushrooms-fry.png",
+      "ingredients": "Печериці в хрусткій паніровці",
+      "price": 95
+    },
     {
-  
-
       "id": "party_mix",
       "categoryId": "snacks",
       "type": "options",
       "name": "Паті мікс",
-      "desc": "стріпси + фрі + сирні кульки + гриби фрі",
-      "image": "images/party-mix.jpg",
+      "desc": "стріпси + фрі + сирні кульки + гриби фрі + соус",
+      "image": "images/party-mix.png",
       "options": [
         {
           "label": "500 г",
-          "price": 335
+          "price": 345
         },
         {
           "label": "1 кг",
@@ -473,13 +493,80 @@
       ]
     },
     {
-      "id": "soon_burgers",
-      "categoryId": "combo",
+      "id": "wings_bbq_varan",
+      "categoryId": "snacks",
+      "type": "options",
+      "name": "VARAN Wings",
+      "image": "images/wings-bbq.png",
+      "desc": "Хрусткі крильця у паніровці",
+      "options": [
+        {
+          "label": "4 шт",
+          "price": 145
+        },
+        {
+          "label": "8 шт",
+          "price": 270
+        }
+      ]
+    },
+    {
+      "id": "wings_varan",
+      "categoryId": "snacks",
+      "type": "options",
+      "name": "VARAN Wings BBQ",
+      "image": "images/wings-bbq2.png",
+      "desc": "крильця в соусі BBQ",
+      "options": [
+        {
+          "label": "4 шт",
+          "price": 156
+        },
+        {
+          "label": "8 шт",
+          "price": 299
+        }
+      ]
+    },
+    {
+      "id": "burger_classic",
+      "categoryId": "burgers",
       "type": "item",
-      "name": "Бургери",
-      "desc": "Скоро в меню",
-      "price": null
+      "name": "Classic Burger",
+      "desc": "1 шт",
+      "image": "images/burger-classic.png",
+      "ingredients": "Котлета, чеддер, томат, соус бургер",
+      "price": 95
+    },
+    {
+      "id": "burger_bbq_bacon",
+      "categoryId": "burgers",
+      "type": "item",
+      "name": "BBQ Bacon Burger",
+      "desc": "1 шт",
+      "image": "images/burger-bbq-bacon.jpg",
+      "ingredients": "Котлета, бекон, чеддер, цибуля, соус BBQ",
+      "price": 189
+    },
+    {
+      "id": "burger_chicken_crispy",
+      "categoryId": "burgers",
+      "type": "item",
+      "name": "Crispy Chicken Burger",
+      "desc": "1 шт",
+      "image": "images/burger-chicken.png",
+      "ingredients": "Хрустке куряче філе, сир,огірок, соус ранч",
+      "price": 95
+    },
+    {
+      "id": "burger_cheese_bomb",
+      "categoryId": "burgers",
+      "type": "item",
+      "name": "Cheese Bomb",
+      "desc": "1 шт",
+      "image": "images/burger-cheese-bomb.jpg",
+      "ingredients": "Котлета, подвійний сир, сирний соус, огірок",
+      "price": 199
     }
   ]
 }
-
